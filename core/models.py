@@ -6,7 +6,7 @@ class Film(models.Model):
         db_table = 'film'
 
     title = models.CharField('Titulo', max_length=100)
-    description = models.TextField('Descrição', max_length=200)
+    description = models.TextField('Descrição')
     director = models.CharField('Diretor', max_length=100)
     producer = models.CharField('Produtora', max_length=100)
     release_date = models.DateField('Produzido em', blank=True, null=True)
