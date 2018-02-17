@@ -6,20 +6,14 @@ from .forms import Contact
 
 class FilmList(generics.ListCreateAPIView):
     def get(self, request):
-        success = False
-        if request.method == "POST":
-            form = Contact(request.POST)
-            if form.is_valid():
-                form.send_mail()
-                form = Contact()
-                success = True
-        else:
-            form = Contact()
         series = Serie.objects.all()
         films = Film.objects.all()
+        serie = Serie.objects.get(pk=3)
+        film = Film.objects.get(pk=17)
         serializer_class = FilmSerializer
         context = {
-            'form': form,
+            'film': film,
+            'serie': serie,
             'films': films,
             'series': series,
         }
