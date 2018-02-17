@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'
 
@@ -123,6 +123,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#E-mail
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'Name <carlos-cms2009@hotmail.com>'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.live.com'
+EMAIL_HOST_USER = 'carlos-cms2009@hotmail.com'
+EMAIL_HOST_PASSWORD = 'Y!p7i5M9/}'
+EMAIL_PORT = 25
+
+CONTACT_EMAIL = 'carlos-cms2009@hotmail.com'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'CSI', 'media')
 MEDIA_URL = '/media/'
