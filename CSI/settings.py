@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -122,19 +123,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
-
-#E-mail
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'Name <carlos-cms2009@hotmail.com>'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.live.com'
-EMAIL_HOST_USER = 'carlos-cms2009@hotmail.com'
-EMAIL_HOST_PASSWORD = 'Y!p7i5M9/}'
-EMAIL_PORT = 25
-
-CONTACT_EMAIL = 'carlos-cms2009@hotmail.com'
-
+#Diretório onde as imagens são salvas
 MEDIA_ROOT = os.path.join(BASE_DIR, 'CSI', 'media')
 MEDIA_URL = '/media/'
 
@@ -142,4 +131,18 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']
 
+#Arquivos Estáticos
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+#Storage do Whitenoise
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Update database configuration with $DATABASE_URL.
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
